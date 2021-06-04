@@ -1,0 +1,6 @@
+.leader_board {
+  display: flex;
+  margin-bottom: 20px;
+  flex-direction: column;
+  align-items: center;
+}

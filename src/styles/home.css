@@ -1,0 +1,40 @@
+.home {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: auto;
+}
+.home__toggle {
+  display: flex;
+  flex-direction: row;
+
+  width: 50%;
+  justify-content: center;
+}
+
+.home__toggle h4 {
+  color: rgb(255, 255, 255);
+  display: inline-block;
+  background-color: rgb(29 193 111);
+  padding: 10px;
+  margin: 1rem;
+  width: 15em;
+  text-align: center;
+  cursor: pointer;
+}
+.home__toggle h4:hover {
+  background-color: rgb(25, 87, 23);
+}
+
+.home__quest {
+  width: 100%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+}
+
+.active {
+  background-color: rgb(25, 87, 23);
+}

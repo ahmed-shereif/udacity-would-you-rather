@@ -1,0 +1,24 @@
+.user {
+  display: flex;
+  width: 40%;
+  box-shadow: 0 0 10px rgb(141, 183, 196);
+  border-radius: 30px;
+  margin-bottom: 20px;
+}
+.user_left {
+  width: 40%;
+  margin-right: 20px;
+  object-fit: contain;
+  padding: 10px;
+}
+.user_left img {
+  width: 100%;
+}
+
+..user_right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  width: 60%;
+}
