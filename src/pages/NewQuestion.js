@@ -9,7 +9,7 @@ function NewQuestion() {
   const { currentUser } = useSelector((state) => state.StateUsers);
   const [optionOne, setoptionOne] = useState("");
   const [optionTwo, setoptionTwo] = useState("");
-
+  const [toggleLoading, setToggleLoading] = useState(false);
   const dispatch = useDispatch();
 
   const handleChangeOptionOne = (e) => {
@@ -32,8 +32,9 @@ function NewQuestion() {
     e.preventDefault();
     if (optionOne === "" || optionTwo === "") {
       alert("please add add a poll first");
-    } else if (optionOne != "" && optionTwo != "") {
+    } else if (optionOne !== "" && optionTwo !== "") {
       e.preventDefault();
+      setToggleLoading(true);
       await _saveQuestion(question);
 
       const usersData = await _getUsers();
@@ -68,7 +69,9 @@ function NewQuestion() {
           name="optionTwo"
           onChange={handleChangeOptionTwo}
         />
-        <button onClick={handleSubmit}> submit</button>
+        <button onClick={handleSubmit}>
+          {toggleLoading ? "Submit..." : "Submit"}
+        </button>
       </form>
     </div>
   );

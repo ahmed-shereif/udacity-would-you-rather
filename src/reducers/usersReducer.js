@@ -1,7 +1,7 @@
 const intialData = {
   users: {},
   questions: {},
-  currentUser: {},
+  currentUser: null,
   toggleSubmit: false,
 };
 

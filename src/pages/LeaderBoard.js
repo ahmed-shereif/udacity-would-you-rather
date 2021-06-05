@@ -6,7 +6,7 @@ import "../styles/leaderboard.css";
 function LeaderBoard() {
   const { users } = useSelector((state) => state.StateUsers);
 
-  const [leaderBoardUsers, setLeaderBoardUsers] = useState(users);
+  const [leaderBoardUsers] = useState(users);
 
   const usersIdArray = Object.keys(leaderBoardUsers);
 
@@ -21,6 +21,7 @@ function LeaderBoard() {
         score: calcuateScore,
       };
       scoreArray.push(updateduser);
+      return "";
     });
     scoreArray.sort((a, b) => {
       return a.score > b.score ? -1 : 1;
@@ -28,7 +29,7 @@ function LeaderBoard() {
     return scoreArray;
   };
   const sortedArrayOFUsers = updatedScoreUser();
-  console.log(sortedArrayOFUsers);
+
   return (
     <div className="leader_board">
       <h1>Leader Board</h1>

@@ -36,7 +36,7 @@ let users = {
     score: "",
   },
 };
-console.log(users);
+
 //
 //
 // QUESTIONS

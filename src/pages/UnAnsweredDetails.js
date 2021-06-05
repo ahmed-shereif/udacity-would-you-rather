@@ -10,6 +10,8 @@ function UnAnswered() {
   const dispatch = useDispatch();
   const [SelectedOption, setSelectedOption] = useState("");
 
+  const [toggleLoading, setToggleLoading] = useState(false);
+
   const handleChange = (e) => {
     const { value } = e.target;
     setSelectedOption(value);
@@ -35,6 +37,7 @@ function UnAnswered() {
       e.preventDefault();
       alert("please answer the poll first");
     } else if (SelectedOption) {
+      setToggleLoading(true);
       e.preventDefault();
       await _saveQuestionAnswer(authedUser, qid, SelectedOption);
 
@@ -75,7 +78,9 @@ function UnAnswered() {
           <label htmlFor="optionTwo">{selectedQuest.optionTwo.text}</label>
         </div>
 
-        <button onClick={getUsersData}>submit</button>
+        <button onClick={getUsersData}>
+          {toggleLoading ? "Submit..." : "Submit"}
+        </button>
       </form>
     </div>
   );

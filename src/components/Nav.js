@@ -26,12 +26,11 @@ function Nav() {
     <div className="nav">
       <div className="left">
         <ul>
-          <Link to="/home">
-            <li>Home</li>
-          </Link>
           {currentUser instanceof Object ? (
             <>
-              {" "}
+              <Link to="/home">
+                <li>Home</li>
+              </Link>
               <Link to="/add">
                 <li>New Question</li>
               </Link>

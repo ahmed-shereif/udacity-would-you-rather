@@ -9,36 +9,36 @@ import UnAnswered from "./pages/UnAnsweredDetails";
 import NewQuestion from "./pages/NewQuestion";
 import LeaderBoard from "./pages/LeaderBoard";
 import NotFound from "./pages/NotFound";
+import ProtectedRoute from "./ProtectedRoute";
+import ProtectedQ from "./ProtectedQ";
 
 function App() {
   return (
     <div className="App">
       <Router>
+        <Nav />
         <Switch>
-          <Route exact path="/home">
-            <Nav />
-            <Home />
-          </Route>
+          <ProtectedRoute exact path="/home" component={Home} />
           <Route exact path="/">
-            <Nav />
             <Login />
           </Route>
-          <Route exact path="/question/:id">
-            <Nav />
-            <AnsweredQuestionsDetails />
-          </Route>
-          <Route exact path="/unansweredquestion/:id">
-            <Nav />
-            <UnAnswered />
-          </Route>
-          <Route exact path="/add">
-            <Nav />
-            <NewQuestion />
-          </Route>
-          <Route exact path="/leaderboard">
-            <Nav />
-            <LeaderBoard />
-          </Route>
+
+          <ProtectedQ
+            exact
+            path="/question/:id"
+            component={AnsweredQuestionsDetails}
+          />
+
+          <ProtectedQ
+            exact
+            path="/unansweredquestion/:id"
+            component={UnAnswered}
+          />
+
+          <ProtectedRoute exact path="/add" component={NewQuestion} />
+
+          <ProtectedRoute exact path="/leaderboard" component={LeaderBoard} />
+
           <Route component={NotFound} />
         </Switch>
       </Router>
