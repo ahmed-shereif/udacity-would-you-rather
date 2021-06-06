@@ -1,16 +1,18 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 import "../styles/answeredDetails.css";
 
 function AnsweredQuestionsDetails() {
   const { id } = useParams();
 
+  let history = useHistory();
+
   const { questions, users } = useSelector((state) => state.StateUsers);
   const selectedQuest = questions[id];
   const userQuest = users[selectedQuest.author];
   const { avatarURL } = userQuest;
-
+  console.log(history.location);
   console.log("userQuest", userQuest.avatarURL);
   return (
     <div className="answer__details">

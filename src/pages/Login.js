@@ -2,26 +2,41 @@ import React, { useState } from "react";
 import "../styles/login.css";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
+
 function Login() {
   const [login, setlogin] = useState("");
 
   let history = useHistory();
+  const dispatch = useDispatch();
 
-  function handleClick() {
-    history.push("/home");
-  }
+  console.log(history.location);
 
   const handleLogin = (e) => {
     const { value } = e.target;
     setlogin(value);
   };
-  const dispatch = useDispatch();
-  dispatch({
-    type: "UPDATE_CURRENTUSER",
-    payload: {
-      currentUser: login,
-    },
-  });
+
+  const handleClick = () => {
+    dispatch({
+      type: "UPDATE_CURRENTUSER",
+      payload: {
+        currentUser: login,
+      },
+    });
+
+    if (history.location.state !== undefined) {
+      if (
+        history.location.state.from.pathname.includes(
+          "/unansweredquestion/"
+        ) === true ||
+        history.location.state.from.pathname.includes("/question/") === true
+      ) {
+        history.push("/NotFound");
+      } else history.push(history.location.state.from.pathname);
+    } else {
+      history.push("/home");
+    }
+  };
 
   return (
     <div className="login">
@@ -36,7 +51,13 @@ function Login() {
         <option value="johndoe">johndoe</option>
       </select>
 
-      <button onClick={handleClick}>Signin</button>
+      <button
+        onClick={handleClick}
+        disabled={login.length ? false : true}
+        className="login_submit_button"
+      >
+        Signin
+      </button>
     </div>
   );
 }

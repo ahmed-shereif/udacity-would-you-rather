@@ -23,13 +23,13 @@ function App() {
             <Login />
           </Route>
 
-          <ProtectedQ
+          <ProtectedRoute
             exact
             path="/question/:id"
             component={AnsweredQuestionsDetails}
           />
 
-          <ProtectedQ
+          <ProtectedRoute
             exact
             path="/unansweredquestion/:id"
             component={UnAnswered}

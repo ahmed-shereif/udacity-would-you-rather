@@ -12,6 +12,7 @@ const usersReducer = (state = intialData, action) => {
         ...state,
         users: action.payload.users,
         questions: action.payload.questions,
+        currentUser: action.payload.currentUser,
       };
     case "UPDATE_CURRENTUSER":
       return {

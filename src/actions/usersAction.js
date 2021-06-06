@@ -9,6 +9,7 @@ export const getUsersData = () => async (dispatch) => {
     payload: {
       users: usersData,
       questions: questionsData,
+      currentUser: null,
     },
   });
 };

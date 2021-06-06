@@ -1,13 +1,12 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import { Route, Redirect } from "react-router-dom";
+import { Route, Redirect, useHistory } from "react-router-dom";
 
 function ProtectedQ({ isAuth, component: Compnent, ...rest }) {
   const { currentUser } = useSelector((state) => state.StateUsers);
+  const history = useHistory();
 
-  if (currentUser === null) {
-    console.log("currentUser is null");
-  }
+  console.log(history.location);
   return (
     <Route
       {...rest}

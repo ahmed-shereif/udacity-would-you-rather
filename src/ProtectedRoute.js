@@ -5,13 +5,11 @@ import { Route, Redirect } from "react-router-dom";
 function ProtectedRoute({ isAuth, component: Compnent, ...rest }) {
   const { currentUser } = useSelector((state) => state.StateUsers);
 
-  if (currentUser === null) {
-    console.log("currentUser is null");
-  }
   return (
     <Route
       {...rest}
       render={(props) => {
+        console.log("props.location", props.location);
         if (currentUser !== null) {
           return <Compnent {...props} />;
         } else {
